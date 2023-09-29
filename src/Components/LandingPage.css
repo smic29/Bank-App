@@ -1,0 +1,13 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    border: 2px inset black;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.submit-button {
+    width: 50%;
+    align-self: center;
+    margin-top: 1rem;
+}
