@@ -9,19 +9,38 @@ import { DataProvider } from './Context/UserData';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [isModalOpenAddUser, setIsModalOpenAddUser] = useState(false);
 
   const handleLogin = (loggedInUser) => {
     setIsLoggedIn(true);
     setUser(loggedInUser);
   }
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    user.isLoggedIn = false;
+  }
+
+  const openModalAddUser = () => {
+    setIsModalOpenAddUser(true);
+  }
+
+  const closeModalAddUser = () => {
+    setIsModalOpenAddUser(false);
+  }
+
   return (
     <DataProvider>
       {isLoggedIn ? (
-        <Dashboard user={user} />
+        <Dashboard user={user} onLogout={handleLogout} />
       ) : (
         <LandingPage onLogin={handleLogin} />
       )}
+      <LoadUserData 
+        isOpen={isModalOpenAddUser} 
+        onClose={closeModalAddUser}
+        openModal={openModalAddUser}
+      />
     </DataProvider>
   );
 }
