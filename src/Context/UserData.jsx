@@ -10,7 +10,8 @@ export const DataProvider = ({ children }) => {
         password: 'theman',
         email: 'dantheman@gmail.com',
         isLoggedIn: false,
-        balance: 100
+        balance: 100,
+        isAdmin: true
         }
     ]);
 

@@ -7,13 +7,13 @@
 ### Features
 - [x] app should have a page to display all users
   - Name and balance are visible.
-- [ ] app should have a page for creating a user using email and password
+- [x] app should have a page for creating a user using email and password
 - [ ] app should have a page for deposit/withdraw/transfer
 
 ### Error Handling
 - [ ] wrong_arguments
   - amount cannot be negative, name cannot start with a number
-- [ ] user_already_exists ('Den' == 'den')
+- [x] user_already_exists ('Den' == 'den')
 - [ ] user_does_not_exists ('Den' == 'den')
 - [ ] not_enough_money
 - [ ] sender_does_not_exists

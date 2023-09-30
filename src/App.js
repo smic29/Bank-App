@@ -19,6 +19,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     user.isLoggedIn = false;
+    setUser(null);
   }
 
   const openModalAddUser = () => {
@@ -36,11 +37,11 @@ function App() {
       ) : (
         <LandingPage onLogin={handleLogin} />
       )}
-      <LoadUserData 
+      {user !== null && user.isAdmin && (<LoadUserData 
         isOpen={isModalOpenAddUser} 
         onClose={closeModalAddUser}
         openModal={openModalAddUser}
-      />
+      />)}
     </DataProvider>
   );
 }
