@@ -2,13 +2,14 @@ import './Dashboard.css'
 import { useData } from '../Context/UserData'
 
 function Dashboard(props) {
-    const { user, onLogout, data } = props
+    const { user, onLogout } = props
 
     return (
         <div>
             <h1>Welcome to your Dashboard, {user.username}!</h1>
             <LogoutButton onLogout={onLogout}/>
-            <ClientList/>
+            <ClientList />
+            <TransactionButtons user={user}/>
         </div>
     )
 }
@@ -37,11 +38,30 @@ function ClientList() {
         <ul>
             {data.map((client, index) => (
                 <li key={index}>
-                    <strong>Email: </strong>{client.email},
+                    <strong>Username: </strong>{client.username} <br />
+                    <strong>Email: </strong>{client.email} <br />
                     <strong> Balance: </strong>{client.balance}
                 </li>
             ))}
         </ul>
+    )
+}
+
+function TransactionButtons() {
+    const { openModal } = useData();
+
+    return (
+        <div className='transaction-buttons-box'>
+            <button
+                onClick={() => openModal('deposit')}
+            >Deposit</button>
+            <button
+                onClick={() => openModal('withdraw')}
+            >Withdraw</button>
+            <button
+                onClick={() => openModal('transfer')}
+            >Transfer</button>
+        </div>
     )
 }
 

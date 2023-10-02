@@ -19,10 +19,28 @@ export const DataProvider = ({ children }) => {
         setData((prevData) => [...prevData, newData]);
     }
 
-    console.log('Data in DataProvider:', data);
+    // console.log('Data in DataProvider:', data);
+
+    const [ activeModal, setActiveModal ] = useState('');
+    const [ isModalOpen, setIsModalOpen ] = useState(false);
+
+
+    const handleActiveModal = (modalName) => {
+        setActiveModal(modalName);
+    }
+
+    const openModal = (modName) => {
+        setActiveModal(modName)
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
 
     return (
-        <LoginData.Provider value={{data, updateData}}>
+        <LoginData.Provider 
+        value={{data, updateData, isModalOpen, openModal, closeModal, activeModal, handleActiveModal}}>
             {children}
         </LoginData.Provider>
     )

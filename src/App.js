@@ -5,11 +5,11 @@ import Dashboard from './Components/Dashboard';
 import LoadUserData from './Components/LoadUserData';
 import { useState } from 'react';
 import { DataProvider } from './Context/UserData';
+import AddUserModal from './Components/Modals/AddUserModal';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [isModalOpenAddUser, setIsModalOpenAddUser] = useState(false);
 
   const handleLogin = (loggedInUser) => {
     setIsLoggedIn(true);
@@ -22,14 +22,6 @@ function App() {
     setUser(null);
   }
 
-  const openModalAddUser = () => {
-    setIsModalOpenAddUser(true);
-  }
-
-  const closeModalAddUser = () => {
-    setIsModalOpenAddUser(false);
-  }
-
   return (
     <DataProvider>
       {isLoggedIn ? (
@@ -37,11 +29,8 @@ function App() {
       ) : (
         <LandingPage onLogin={handleLogin} />
       )}
-      {user !== null && user.isAdmin && (<LoadUserData 
-        isOpen={isModalOpenAddUser} 
-        onClose={closeModalAddUser}
-        openModal={openModalAddUser}
-      />)}
+      {user !== null && user.isAdmin && (<LoadUserData user={user}/>)}
+      <AddUserModal user={user}/>
     </DataProvider>
   );
 }

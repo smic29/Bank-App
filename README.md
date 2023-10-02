@@ -8,16 +8,17 @@
 - [x] app should have a page to display all users
   - Name and balance are visible.
 - [x] app should have a page for creating a user using email and password
-- [ ] app should have a page for deposit/withdraw/transfer
+- [x] app should have a page for deposit/withdraw/transfer
 
 ### Error Handling
-- [ ] wrong_arguments
-  - amount cannot be negative, name cannot start with a number
+- [x] wrong_arguments
+  - [x] amount cannot be negative
+  - [x] name cannot start with a number
 - [x] user_already_exists ('Den' == 'den')
-- [ ] user_does_not_exists ('Den' == 'den')
-- [ ] not_enough_money
+- [x] user_does_not_exists ('Den' == 'den')
+- [x] not_enough_money
 - [ ] sender_does_not_exists
-- [ ] receiver_does_not_exists
+- [x] receiver_does_not_exists
 
 ### Budget App
 - [ ] budget tracking app that extends bank app by adding a feature that enables a user to add his expense items on his dashboard.
