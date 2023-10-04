@@ -6,10 +6,12 @@ import LoadUserData from './Components/LoadUserData';
 import { useState } from 'react';
 import { DataProvider } from './Context/UserData';
 import AddUserModal from './Components/Modals/AddUserModal';
+import AddTestUsers from './Assets/AddTestUsers';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  const [ user, setUser ] = useState(null);
+  const [ areTestUsersAdded, setAreTestUsersAdded ] = useState(false);
 
   const handleLogin = (loggedInUser) => {
     setIsLoggedIn(true);
@@ -22,6 +24,10 @@ function App() {
     setUser(null);
   }
 
+  const handleAddedTestUsers = () => {
+    areTestUsersAdded ? setAreTestUsersAdded(false) : setAreTestUsersAdded(true);
+  }
+
   return (
     <DataProvider>
       {isLoggedIn ? (
@@ -31,6 +37,7 @@ function App() {
       )}
       {user !== null && user.isAdmin && (<LoadUserData user={user}/>)}
       <AddUserModal user={user}/>
+      {user !== null && user.isAdmin && <AddTestUsers isAdded= {areTestUsersAdded} onAdd={handleAddedTestUsers} />}
     </DataProvider>
   );
 }

@@ -1,24 +1,95 @@
-.addUser-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
+.transfer-form-admin {
     display: flex;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 0.25rem inset white;
+}
+
+.box h2,p {
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.transfer-header {
+    text-align: center;
+    margin: 0;
+}
+
+.transfer-form {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.transfer-submit-button {
+    width: min-content;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.username-error {
+    color: red;
+    font-size: 0.75rem;
+}
+
+.username-accept {
+    color: green;
+    font-size: 0.75rem;
+}
+
+.deposit-form, .withdraw-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     align-items: center;
 }
 
-.addUser-formBox {
-    background-color: whitesmoke;
-    padding: 1rem;
-    border-radius: 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.deposit-form h1, .withdraw-form h1 {
+    margin: 0;
+    margin-bottom: .25rem;
 }
 
-.close-button {
+.deposit-form p, .withdraw-form p {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.deposit-form input[type="number"], .withdraw-form input[type="number"] {
+    width: 25%;
+    align-self: center;
+    text-align: right;
+    padding: .12rem;
+}
+
+.deposit-form input[type="text"], .withdraw-form input[type="text"] {
+    width: 40%;
+    height: 1rem;
+    align-self: center;
+    text-align: center;
+}
+
+.deposit-inputbox, .withdraw-inputbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deposit-form legend, .withdraw-form legend {
+    border-top: 0.25rem solid gray;
+    position: relative;
+}
+
+.username-error.deposit, .username-error.withdraw {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    right: 5%;
+    top: 47%;
+}
+
+.username-accept.deposit, .username-accept.withdraw {
+    position: absolute;
+    right: 12.5%;
+    top: 37.5%;
 }

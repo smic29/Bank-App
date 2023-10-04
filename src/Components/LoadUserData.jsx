@@ -12,7 +12,7 @@ function LoadUserData(props){
             onClick={() => openModal('adduser')}
             className='load-user-data-button'
         >Add User Data</button>
-        <AddUserModal user={user}/>
+        {/* <AddUserModal user={user}/> */}
         </>
     )
 }

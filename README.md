@@ -28,5 +28,5 @@
 
 ### 3 Unique features
 - [x] Log-in page
-- [ ] Still discussing
-- [ ] Still discussing
+- [ ] Transaction History (Deposit/Withdraw/Transfers)
+- [ ] Client dashboard

@@ -8,4 +8,32 @@
 .transaction-buttons-box {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.client-table {
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.client-table th,td {
+    border: 1px solid black;
+    padding: 0.12rem;
+}
+
+.client-table tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+.client-table tbody tr:hover {
+    background-color: lightblue;
+}
+
+.client-table th {
+    background-color: #333;
+    color: whitesmoke;
 }

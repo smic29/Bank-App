@@ -19,6 +19,11 @@ export const DataProvider = ({ children }) => {
         setData((prevData) => [...prevData, newData]);
     }
 
+    const mergeData = (buttondata) => {
+        const mergedData = [...data, ...buttondata];
+        setData(mergedData);
+    }
+
     // console.log('Data in DataProvider:', data);
 
     const [ activeModal, setActiveModal ] = useState('');
@@ -40,7 +45,10 @@ export const DataProvider = ({ children }) => {
 
     return (
         <LoginData.Provider 
-        value={{data, updateData, isModalOpen, openModal, closeModal, activeModal, handleActiveModal}}>
+        value={
+            {data, updateData, mergeData,
+            isModalOpen, openModal, closeModal, activeModal, handleActiveModal
+            }}>
             {children}
         </LoginData.Provider>
     )

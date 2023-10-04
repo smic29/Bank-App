@@ -104,33 +104,48 @@ function AddUserForm() {
     return (
         <form
             onSubmit={handleFormSubmit}
+            className='add-user-form'
         >
-            <label>Username: </label>
-            <input 
-                type='text'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            ></input> <br />
-            <label>Password: </label>
-            <input 
-                type='text'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            ></input> <br />
-            <label>Initial Balance: </label>
-            <input 
-                type='number'
-                value={balance}
-                onChange={(e) => setBalance(e.target.value)}
-            ></input> <br />
-            <label>Email: </label>
-            <input 
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            ></input> <br />
+            <h1>New Client Information</h1>
+            <legend>
+                <div className='input-box'>
+                    <label>Username: </label>
+                    <input 
+                        type='text'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    ></input>
+                </div>
+                <div className='input-box'>
+                    <label>Password: </label>
+                    <input 
+                        type='text'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    ></input>
+                </div>
+                <div className='input-box'>
+                    <label>Initial Balance: </label>
+                    <input 
+                        type='number'
+                        value={balance}
+                        onChange={(e) => setBalance(e.target.value)}
+                    ></input>
+                </div>
+                <div className='input-box'>
+                    <label>Email: </label>
+                    <input 
+                        type='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    ></input>
+                </div>
+            </legend>
             <input
                 type='submit'
+                className='add-user-submit'
             ></input>
         </form>
     )
