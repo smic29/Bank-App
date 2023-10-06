@@ -33,3 +33,4 @@
 
 #### Additional
 - [x] Formatted Currency
+- [x] Custom Notification and alerts
