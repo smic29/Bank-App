@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useData } from '../../Context/UserData';
 import './AddUserModal.css';
 import { DepositForm, WithdrawForm, TransferForm } from './TransactionsModal';
+import { CSSTransition } from 'react-transition-group';
 
 function AddUserModal(props) {
     const { isModalOpen, closeModal, activeModal } = useData();
@@ -47,6 +48,12 @@ function AddUserModal(props) {
     }
 
     return (
+        <CSSTransition
+        in={isModalOpen}
+        timeout={300}
+        classNames="fade"
+        unmountOnExit>
+            
         <div className='addUser-modal'>
             <div className='addUser-formBox'>
                 <button className='close-button' onClick={closeModal}>
@@ -55,11 +62,12 @@ function AddUserModal(props) {
                 <RenderModal />
             </div>
         </div>
+        </CSSTransition>
     )
 }
 
 function AddUserForm() {
-    const { data, updateData, closeModal } = useData();
+    const { data, updateData, closeModal, triggerNotif, giveNotif } = useData();
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -94,7 +102,9 @@ function AddUserForm() {
             handleError(`Username cannot start with a number`);
         }else if (!usernameCheck){
             addUser();
-            alert(`New User Added!`);
+            // alert(`New User Added!`);
+            giveNotif(`Succesfully Added ${username}`)
+            triggerNotif();
             closeModal();
         } else {
             handleError(`User already exists`)

@@ -4,14 +4,16 @@ import './AddTestUsers.css'
 
 function AddTestUsers(props) {
     const { onAdd, isAdded } = props;
-    const { mergeData } = useData();
+    const { mergeData, triggerNotif, giveNotif } = useData();
 
     const addUsers = async () => {
         try {
             const response = await fetch('./testusers.json')
             const userData = await response.json();
             mergeData(userData);
-            alert('Test Users Added to list')
+            // alert('Test Users Added to list')
+            giveNotif(`Test Users Added to Client List`);
+            triggerNotif();
             onAdd();
         } catch (error) {
             alert('Error loading user data')

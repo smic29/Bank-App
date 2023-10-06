@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import LandingPage from './Components/LandingPage';
 import Dashboard from './Components/Dashboard';
@@ -7,6 +6,7 @@ import { useState } from 'react';
 import { DataProvider } from './Context/UserData';
 import AddUserModal from './Components/Modals/AddUserModal';
 import AddTestUsers from './Assets/AddTestUsers';
+import { CSSTransition } from 'react-transition-group';
 
 function App() {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
@@ -30,13 +30,18 @@ function App() {
 
   return (
     <DataProvider>
-      {isLoggedIn ? (
-        <Dashboard user={user} onLogout={handleLogout} />
-      ) : (
-        <LandingPage onLogin={handleLogin} />
-      )}
+      <CSSTransition
+      in={isLoggedIn}
+      timeout={300}
+      classNames="fade">
+        {isLoggedIn ? (
+          <Dashboard user={user} onLogout={handleLogout} />
+        ) : (
+          <LandingPage onLogin={handleLogin} />
+        )}
+      </CSSTransition>
       {user !== null && user.isAdmin && (<LoadUserData user={user}/>)}
-      <AddUserModal user={user}/>
+      {/* <AddUserModal user={user}/> */}
       {user !== null && user.isAdmin && <AddTestUsers isAdded= {areTestUsersAdded} onAdd={handleAddedTestUsers} />}
     </DataProvider>
   );

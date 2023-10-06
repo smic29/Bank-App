@@ -17,7 +17,7 @@
 - [x] user_already_exists ('Den' == 'den')
 - [x] user_does_not_exists ('Den' == 'den')
 - [x] not_enough_money
-- [ ] sender_does_not_exists
+- [x] sender_does_not_exists
 - [x] receiver_does_not_exists
 
 ### Budget App
@@ -28,5 +28,8 @@
 
 ### 3 Unique features
 - [x] Log-in page
-- [ ] Transaction History (Deposit/Withdraw/Transfers)
-- [ ] Client dashboard
+- [x] Transaction History (Deposit/Withdraw/Transfers)
+- [x] Client dashboard
+
+#### Additional
+- [x] Formatted Currency

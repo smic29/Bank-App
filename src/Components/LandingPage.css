@@ -1,13 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Montserrat:wght@100&family=Roboto:ital,wght@0,100;1,100&display=swap');
+
 .login-form {
     display: flex;
     flex-direction: column;
-    border: 2px inset black;
+    /* border: 1px solid black; */
     padding: 2rem;
-    border-radius: 2rem;
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    background-color: #91C8E4;
+    font-weight: 800;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
 .submit-button {
-    width: 50%;
+    width: min-content;
     align-self: center;
     margin-top: 1rem;
+    background: linear-gradient(to bottom, #91C8E4, #4682A9);
+    border-radius: 5px;
+    color: white;
+    padding: 0.25rem;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.submit-button:hover {
+    background: radial-gradient(circle, #91C8E4, #4682A9);
+    transform: scale(.95);
+}
+
+.password-input-box {
+    display: flex;
+    position: relative;
+}
+
+.material-symbols-outlined {
+    position: absolute;
+    right: 3%;
+    top: 10%;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    opacity: 0.8;
 }

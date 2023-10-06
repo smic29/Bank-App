@@ -1,3 +1,32 @@
+
+.modal-enter .addUser-formBox{
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.modal-enter-active .addUser-formBox{
+opacity: 1;
+transform: translateY(0);
+transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit .addUser-formBox{
+opacity: 0;
+transform: translateY(0);
+transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.modal-exit-active .addUser-formBox{
+opacity: 0;
+transform: translateY(-100%);
+transition: opacity 300ms, transform 300ms;
+}
+
+.dashboard-container {
+    font-family: "Roboto";
+}
+
 .logout-button {
     position: fixed;
     top: 0;
@@ -31,9 +60,24 @@
 
 .client-table tbody tr:hover {
     background-color: lightblue;
+    cursor: pointer;
+}
+
+.transactions-row {
+    font-size: .75rem;
+    text-align: left;
+}
+
+.expanded-row {
+    background-color: lightcoral;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .client-table th {
     background-color: #333;
     color: whitesmoke;
+}
+
+.client-amount-column {
+    text-align: left;
 }

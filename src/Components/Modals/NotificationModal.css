@@ -1,0 +1,37 @@
+.notif-pop-up{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    background-color: #F6F4EB;
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    font-family: 'Josefin Sans';
+    z-index: 99999;
+}
+
+.notif-enter {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.notif-enter-active {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.notif-exit {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.notif-exit-active {
+    opacity: 1;
+    transform: translate(-50%, -100%);
+    transition: opacity 300ms, transform 300ms;
+}

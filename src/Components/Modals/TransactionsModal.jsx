@@ -1,9 +1,10 @@
 import './TransactionsModal.css'
 import { useData } from '../../Context/UserData'
 import { useState } from 'react'
+import CurrencyFormatter, { formatCurrency } from '../../Assets/CurrencyFormatter';
 
 export function DepositForm(props) {
-    const { data, updateData } = useData();
+    const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
     const [ balance, setBalance ] = useState(0);
     const [ client, setClient ] = useState('');
@@ -15,8 +16,13 @@ export function DepositForm(props) {
             alert('You cannot deposit negative money lol')
         } else {
             user.balance = Number(user.balance) + Number(balance);
+            const formattedBalance = formatCurrency(balance)
+            user.transactions.unshift(`${formattedBalance} deposited using the Bank App`)
             setBalance(0);
-            alert('Your balance will be updated shortly. Thank you')}
+            // alert('Your balance will be updated shortly. Thank you')
+            giveNotif(`Deposit Succesful. Balance Updated`)
+            triggerNotif();
+        }
     }
 
     const doesClientExist = () => {
@@ -57,8 +63,12 @@ export function DepositForm(props) {
         const userBalance = Number(deposituser.balance);
 
         deposituser.balance = depositAmount + userBalance;
+        const formattedDeposit = formatCurrency(depositAmount)
+        deposituser.transactions.unshift(`${formattedDeposit} deposited by Admin ${user.username}`)
         setBalance(0);
-        alert('Balance will be updated shortly')
+        // alert('Balance will be updated shortly')
+        giveNotif(`Deposit Successful. Balance Updated`);
+        triggerNotif();
     }
 
     if (user.isAdmin) {
@@ -87,13 +97,13 @@ export function DepositForm(props) {
                         ></input>
                     </div>
                     {doesClientExist() &&
-                    <span>Current account balance: {getClientObject().balance}</span>
+                    <span>Current account balance: <CurrencyFormatter amount={getClientObject().balance}/></span>
                     }
                 </legend>
                 <input 
                     type='submit' 
                     className='transfer-submit-button'
-                    disabled = {balance <= 0}
+                    disabled = {balance <= 0 || !doesClientExist()}
                     value= {balance <= 0 ? 'Please enter an amount' : 'Proceed'}
                     ></input>
             </form>
@@ -106,7 +116,7 @@ export function DepositForm(props) {
             >
                 <h1>Deposit</h1>
                 <legend>
-                    <p>Your current balance is: {user.balance} </p>
+                    <p>Your current balance is: <CurrencyFormatter amount={user.balance}/> </p>
 
                     <div className='deposit-inputbox'>
                         <label>Amount to Deposit: </label>
@@ -129,7 +139,7 @@ export function DepositForm(props) {
 }
 
 export function WithdrawForm(props) {
-    const { data, updateData } = useData();
+    const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
     const [ balance, setBalance ] = useState(0);
     const [ client, setClient ] = useState('');
@@ -146,8 +156,12 @@ export function WithdrawForm(props) {
             alert('Nice try omegalul')
         } else {
             user.balance = currentBalance - withdrawAmount;
+            const formattedBalance = formatCurrency(balance)
+            user.transactions.unshift(`(${formattedBalance}) withdrawn using the Bank App`)
             setBalance(0);
-            alert('Withdrawal Successful. Your balance will be updated shortly. Thank you')
+            // alert('Withdrawal Successful. Your balance will be updated shortly. Thank you')
+            giveNotif(`${formattedBalance} withdrawn. Balance updated.`)
+            triggerNotif();
         }
     }
 
@@ -195,8 +209,12 @@ export function WithdrawForm(props) {
         const userBalance = Number(withdrawFrom.balance);
 
         withdrawFrom.balance = userBalance - withdrawAmount;
+        const formattedWithdrawAmount = formatCurrency(withdrawAmount)
+        withdrawFrom.transactions.unshift(`(${formattedWithdrawAmount}) withdrawn by Admin ${user.username}`)
         setBalance(0);
-        alert('Withdrawal Succesful. Balance will be updated shortly')
+        // alert('Withdrawal Succesful. Balance will be updated shortly')
+        giveNotif(`${formattedWithdrawAmount} withdrawn from ${withdrawFrom.username}'s account. Balance Updated`)
+        triggerNotif();
     }
 
     if (user.isAdmin){
@@ -208,7 +226,7 @@ export function WithdrawForm(props) {
             <h1>Withdraw</h1>
             <legend>
                 <div className='withdraw-inputbox'>
-                    <p>Select account to deposit to:</p>
+                    <p>Select account:</p>
                     <input 
                     type='text'
                     value={client}
@@ -224,13 +242,13 @@ export function WithdrawForm(props) {
                     />
                 </div>
                 {doesClientExist() &&
-                <span>Current account balance: {getClientObject().balance}</span>}
+                <span>Current account balance: <CurrencyFormatter amount={getClientObject().balance}/></span>}
             </legend>
             <input 
                 type='submit'
                 className='transfer-submit-button'
                 value={balance <= 0 ? 'Enter an amount' : 'Proceed'}
-                disabled = {balance <= 0 || !isLessThanBalance()}/>
+                disabled = {balance <= 0 || !isLessThanBalance() || !doesClientExist()}/>
         </form>
         )
     } else {
@@ -241,7 +259,7 @@ export function WithdrawForm(props) {
             >
                 <h1>Withdraw</h1>
                 <legend>
-                    <p>Your current balance is: {user.balance}</p>
+                    <p>Your current balance is: <CurrencyFormatter amount={user.balance}/></p>
                     
                     <div className='withdraw-inputbox'>
                         <label>Amount to Withdraw: </label>
@@ -256,13 +274,13 @@ export function WithdrawForm(props) {
                     type='submit'
                     className='transfer-submit-button'
                     value={balance <= 0 ? 'Enter an amount' : 'Proceed'}
-                    disabled = {balance <= 0}/>
+                    disabled = {balance <= 0 || balance > user.balance}/>
             </form>
     )}
 }
 
 export function TransferForm(props) {
-    const { data, updateData } = useData();
+    const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
     const [ balance, setBalance ] = useState(0);
     const [ recipient, setRecipient ] = useState(null);
@@ -350,8 +368,13 @@ export function TransferForm(props) {
 
         if (userExists && amountSend > 0 && !isSendingtoSelf){
             receiver.balance = amountSend + receiverBalance;
+            const formattedAmountSend = formatCurrency(amountSend)
+            receiver.transactions.unshift(`${formattedAmountSend} received from ${user.username}. Sent from the Bank App`)
             user.balance = userBalance - amountSend;
-            alert(`Transfer completed. Balance will be updated shortly`)
+            user.transactions.unshift(`(${formattedAmountSend}) sent to ${receiver.username}. Sent from the Bank App `)
+            // alert(`Transfer completed. Balance will be updated shortly`)
+            giveNotif(`${formattedAmountSend} sent to ${receiver.username}. Balance Updated`)
+            triggerNotif();
             setSendAmount(0);
             setRecipient('');
         } else if (userExists && amountSend <= 0 && !isSendingtoSelf) {
@@ -385,7 +408,12 @@ export function TransferForm(props) {
             ) {
             receiver.balance = amountSend + receiveBalance;
             senduser.balance = senderBalance - amountSend;
-            alert(`Transfer Completed`);
+            const formattedAmountSend = formatCurrency(amountSend)
+            receiver.transactions.unshift(`${formattedAmountSend} received. Transferred from ${senduser.username} by Admin ${user.username}`)
+            senduser.transactions.unshift(`(${formattedAmountSend}) sent to ${receiver.username}. Processed by Admin ${user.username}`)
+            // alert(`Transfer Completed`);
+            giveNotif(`${formattedAmountSend} transferred from ${senduser.username} to ${receiver.username}.`)
+            triggerNotif();
             setRecipient(receiver.username)
             setSender(senduser.username)
             setSendAmount(0);
@@ -402,10 +430,11 @@ export function TransferForm(props) {
                 className='transfer-form'       
             >
                 <h1 className='transfer-header'>Transfer</h1>
+                <legend>
                 <div className='transfer-form-admin'>
                     <div className='sender-box box'>
                         <h2>Sender</h2>
-                        <p>Current balance is: {giveSenderBalance()}</p>
+                        <p>Current balance is: <CurrencyFormatter amount={giveSenderBalance()}/></p>
 
                         <label>Sender's Username:</label>
                         <input 
@@ -425,7 +454,7 @@ export function TransferForm(props) {
                     </div>
                     <div className='receiver-box box'>
                         <h2>Receiver</h2>
-                        <p>Current balance is: {giveRecipientBalance()}</p>
+                        <p>Current balance is: <CurrencyFormatter amount={giveRecipientBalance()}/></p>
 
                         <label>Recipient's Username: </label>
                         <input
@@ -436,26 +465,18 @@ export function TransferForm(props) {
                         />
                         {recipient !== null && recipient !== '' && <UserFinder />}
                         
-                        {/* <label>Amount: </label>
-                        <input
-                            type='number'
-                            value={sendAmount}
-                            onChange={(e) => setSendAmount(e.target.value)}
-                            required
-                        /> */}
                         <br />
                     </div>
                 </div>
-                {/* {doesUserExist() && <input
-                    type='submit'
-                    className='transfer-submit-button'
-                    value='Send'
-                />} */}
+                </legend>
                 <input
                     type='submit'
                     className='transfer-submit-button'
                     value='Send'
-                    disabled = {!doesUserExist() || sendAmount <= 0 || !doesSenderExist()}
+                    disabled = {!doesUserExist() ||
+                        sendAmount <= 0 || 
+                        !doesSenderExist() ||
+                        sendAmount > giveSenderBalance()}
                 />
             </form>
     )
@@ -466,8 +487,9 @@ export function TransferForm(props) {
                 className='transfer-form'        
             >
                 <h1 className='transfer-header'>Transfer</h1>
+                <legend>
                 <div className='box'>
-                <p>Your current balance is: {user.balance}</p>
+                <p>Your current balance is: <CurrencyFormatter amount={user.balance}/></p>
 
                 <label>Recipient's Username: </label>
                 <input
@@ -487,11 +509,12 @@ export function TransferForm(props) {
                 />
                 <br />
                 </div>
+                </legend>
                 <input
                     type='submit'
                     className='transfer-submit-button'
                     value='Send'
-                    disabled = {!doesUserExist || sendAmount <= 0}
+                    disabled = {doesUserExist() === false || sendAmount <= 0 || sendAmount > user.balance}
                 />
             </form>
         )

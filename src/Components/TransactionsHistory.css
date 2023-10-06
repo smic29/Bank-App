@@ -1,0 +1,12 @@
+.transactions {
+    background-color: lightblue;
+    margin: 0.5rem;
+    padding: 0.25rem;
+    border-radius: .5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transactions:nth-child(even) {
+    background-color: white;
+}

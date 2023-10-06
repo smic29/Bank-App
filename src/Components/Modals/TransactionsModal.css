@@ -6,7 +6,8 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border: 0.25rem inset white;
+    padding-top: .25rem;
+    /* border: 0.25rem inset white; */
 }
 
 .box h2,p {
@@ -23,6 +24,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.transfer-form legend {
+    border-top: .25rem solid gray;
+    padding: 1rem;
 }
 
 .transfer-submit-button {
@@ -85,11 +91,11 @@
 .username-error.deposit, .username-error.withdraw {
     position: absolute;
     right: 5%;
-    top: 47%;
+    top: 40%;
 }
 
 .username-accept.deposit, .username-accept.withdraw {
     position: absolute;
     right: 12.5%;
-    top: 37.5%;
+    top: 30%;
 }

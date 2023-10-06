@@ -1,12 +1,16 @@
 import './LandingPage.css'
 import { useData } from '../Context/UserData'
 import { useState } from 'react';
-import Dashboard from './Dashboard';
 
 function LandingPage({onLogin}){
-    const { data, updateData } = useData();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const { data, triggerNotif, giveNotif  } = useData();
+    const [ username, setUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ showPassword, setShowPassword ] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -16,12 +20,16 @@ function LandingPage({onLogin}){
         userObj.password === password)
 
         if (user){
-            alert(`Login successful. Hello ${username}`)
+            // alert(`Login successful. Hello ${username}`)
+            giveNotif(`Login Succesful. Hello ${user.username}!`)
+            triggerNotif();
             user.isLoggedIn = true;
             console.log(user);
             onLogin(user);
         } else {
-            alert(`Login failed. Please check login information`)
+            // alert(`Login failed. Please check login information`)
+            giveNotif(`Login Failed. Check login information`)
+            triggerNotif();
         }
     }
 
@@ -37,15 +45,25 @@ function LandingPage({onLogin}){
                 onChange={(e) => setUsername(e.target.value)}
             />
             <label>Password : </label>
-            <input 
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className='password-input-box'>
+                <input 
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <span 
+                class='material-symbols-outlined'
+                onMouseEnter={togglePasswordVisibility}
+                onMouseLeave={togglePasswordVisibility}>
+                    {showPassword ? 'visibility' : 'visibility_off'}
+                </span>
+            </div>
             <input 
                 className='submit-button'
                 type="submit"
+                value="Log in"
             />
+            
         </form>
     )
 }

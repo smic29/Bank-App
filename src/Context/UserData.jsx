@@ -1,5 +1,7 @@
 import { useContext, createContext } from "react"
 import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import NotificationPopup from "../Components/Modals/NotificationModal";
 
 const LoginData = createContext();
 
@@ -11,7 +13,8 @@ export const DataProvider = ({ children }) => {
         email: 'dantheman@gmail.com',
         isLoggedIn: false,
         balance: 100,
-        isAdmin: true
+        isAdmin: true,
+        transactions: []
         }
     ]);
 
@@ -35,21 +38,43 @@ export const DataProvider = ({ children }) => {
     }
 
     const openModal = (modName) => {
+        setIsModalOpen(true)
         setActiveModal(modName)
-        setIsModalOpen(true);
     }
 
     const closeModal = () => {
         setIsModalOpen(false);
     }
 
+    const [ notifTrigger, setNotifTrigger ] = useState(false);
+    const [ notifMsg, setNotifMsg ] = useState('');
+
+    const triggerNotif = () => {
+        setNotifTrigger(true);
+        setTimeout(() => {setNotifTrigger(false)},3000)
+    }
+
+    const giveNotif = (msg) => {
+        setNotifMsg(msg)
+    }
+
     return (
         <LoginData.Provider 
         value={
             {data, updateData, mergeData,
-            isModalOpen, openModal, closeModal, activeModal, handleActiveModal
+            isModalOpen, openModal, closeModal, activeModal, handleActiveModal,
+            notifTrigger, triggerNotif, notifMsg, giveNotif
             }}>
             {children}
+            <CSSTransition
+            in={notifTrigger}
+            timeout={300}
+            classNames="notif"
+            >
+            <>
+            {notifTrigger && <NotificationPopup/>}
+            </>
+            </CSSTransition>
         </LoginData.Provider>
     )
 }

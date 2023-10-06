@@ -5,7 +5,8 @@
       "email": "theman@ismypassword.com",
       "isLoggedIn": false,
       "balance": 1000,
-      "isAdmin": true
+      "isAdmin": false,
+      "transactions": []
     },
     {
       "username": "Alice",
@@ -13,7 +14,8 @@
       "email": "alice@ismypassword.com",
       "isLoggedIn": true,
       "balance": 250,
-      "isAdmin": false
+      "isAdmin": false,
+      "transactions": []
     },
     {
       "username": "Bob",
@@ -21,7 +23,8 @@
       "email": "bob@ismypassword.com",
       "isLoggedIn": false,
       "balance": 500,
-      "isAdmin": false
+      "isAdmin": false,
+      "transactions": []
     },
     {
         "username": "Joe",
@@ -29,7 +32,8 @@
         "email": "joe@ismypassword.com",
         "isLoggedIn": false,
         "balance": 250,
-        "isAdmin": false
+        "isAdmin": false,
+        "transactions": []
     },
     {
         "username": "Rick",
@@ -37,7 +41,8 @@
         "email": "rick@ismypassword.com",
         "isLoggedIn": false,
         "balance": 150,
-        "isAdmin": false
+        "isAdmin": false,
+        "transactions": []
     }
   ]
   
