@@ -21,10 +21,10 @@
 - [x] receiver_does_not_exists
 
 ### Budget App
-- [ ] budget tracking app that extends bank app by adding a feature that enables a user to add his expense items on his dashboard.
-- [ ] add, delete, and list methods for expense items.
-- [ ] can add expense item even if the account balance is not enough (just show negative balance)
-- [ ] Cost of a specific expense item is deduced to the user's current balance
+- [x] budget tracking app that extends bank app by adding a feature that enables a user to add his expense items on his dashboard.
+- [x] add, delete, and list methods for expense items.
+- [x] can add expense item even if the account balance is not enough (just show negative balance)
+- [x] Cost of a specific expense item is deduced to the user's current balance
 
 ### 3 Unique features
 - [x] Log-in page

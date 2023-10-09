@@ -15,7 +15,7 @@ function Dashboard(props) {
 
     return (
         <div className='dashboard-container'>
-            <h1>Welcome to your Dashboard, {user.username}!</h1>
+            <h1 className='dashboard-welcome'>Welcome to your Dashboard, {user.username}!</h1>
             <LogoutButton onLogout={onLogout} user={user}/>
             {user.isAdmin ? 
             <ClientList /> :
@@ -43,16 +43,24 @@ function LogoutButton(props) {
     const { triggerNotif, giveNotif } = useData();
 
     return (
-        <button
-            onClick={() => {
-                giveNotif(`Good bye ${user.username}`);
-                triggerNotif();
-                onLogout();
-            }}
-            className="logout-button"
-        >
-            Logout
-        </button>
+        // <button
+        //     onClick={() => {
+        //         giveNotif(`Good bye ${user.username}`);
+        //         triggerNotif();
+        //         onLogout();
+        //     }}
+        //     className="logout-button"
+        // >
+        //     Logout
+        // </button>
+        <span class="material-symbols-outlined logout"
+        onClick={() => {
+                     giveNotif(`Good bye ${user.username}`);
+                     triggerNotif();
+                     onLogout();
+                 }}>
+        logout
+        </span>
     )
 }
 
