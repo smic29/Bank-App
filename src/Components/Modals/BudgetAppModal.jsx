@@ -76,7 +76,7 @@ function BudgetAppModal({ user }) {
               value={formattedBalance}
             />
           </p>
-          <p>Less Expenses:
+          <p>+/-  Expenses:
           <input
               className="balance-input"
               type="text"
