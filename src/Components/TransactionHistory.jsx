@@ -3,16 +3,23 @@ import './TransactionsHistory.css'
 
 function TransactionHistory(props) {
     const { user } = props;
-    const { data } = useData();
 
     return (
         <div>
-            <h2>Transaction History</h2>
+            <h2 className="table-header">Transaction History</h2>
             {user.transactions.map((item, index) => (
-                <p key={index} className="transactions">{item}</p>
+                <p key={index} className={`transactions ${determineNegative(item)}`}>{item}</p>
             ))}
         </div>
     )
+}
+
+function determineNegative(item) {
+    if (item.includes('(')) {
+        return 'debit';
+    } else {
+        return 'credit'
+    }
 }
 
 export default TransactionHistory

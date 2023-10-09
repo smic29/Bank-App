@@ -4,7 +4,6 @@ import Dashboard from './Components/Dashboard';
 import LoadUserData from './Components/LoadUserData';
 import { useState } from 'react';
 import { DataProvider } from './Context/UserData';
-import AddUserModal from './Components/Modals/AddUserModal';
 import AddTestUsers from './Assets/AddTestUsers';
 import { CSSTransition } from 'react-transition-group';
 

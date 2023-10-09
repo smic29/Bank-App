@@ -28,9 +28,10 @@
 
 ### 3 Unique features
 - [x] Log-in page
+  - [x] On-hover password visibility
 - [x] Transaction History (Deposit/Withdraw/Transfers)
 - [x] Client dashboard
 
 #### Additional
 - [x] Formatted Currency
-- [x] Custom Notification and alerts
+- [x] Custom Notification/Alerts

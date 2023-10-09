@@ -1,19 +1,23 @@
 import './LoadUserData.css'
 import { useData } from '../Context/UserData';
-import AddUserModal from './Modals/AddUserModal';
 
-function LoadUserData(props){
-    const { openModal, closeModal, isModalOpen } = useData();
-    const { user } = props;
+function LoadUserData(){
+    const { isModalOpen, openModal } = useData();
+
+    const isDisabled = isModalOpen;
 
     return (
-        <>
+        <div className='add-user-box'>
+        <span 
+        class={`material-symbols-outlined ${isDisabled ? 'disabled':''}`}
+        onClick={() => !isDisabled && openModal('adduser')}>
+        account_circle
+        </span>
         <button
-            onClick={() => openModal('adduser')}
+            onClick={() => !isDisabled && openModal('adduser')}
             className='load-user-data-button'
         >Add User Data</button>
-        {/* <AddUserModal user={user}/> */}
-        </>
+        </div>
     )
 }
 

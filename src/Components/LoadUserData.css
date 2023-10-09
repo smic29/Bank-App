@@ -1,6 +1,49 @@
-.load-user-data-button {
+.add-user-box {
     position: fixed;
+    display: flex;
     bottom: 0;
     left: 0;
     margin: 1rem;
+}
+
+.add-user-box .material-symbols-outlined {
+    cursor: pointer;
+    font-size: 3rem;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.add-user-box .material-symbols-outlined:hover {
+    color: lightcoral;
+    transform: scale(1.2);
+}
+
+.add-user-box .material-symbols-outlined:active {
+    transform: scale(.95);
+}
+
+.load-user-data-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: visibility 0s, opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+.load-user-data-button.hidden {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.material-symbols-outlined:hover + .load-user-data-button {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.disabled {
+    opacity: .8;
+    pointer-events: none;
 }

@@ -68,6 +68,8 @@ function ClientList() {
     }
 
     return (
+        <>
+        <h2 className='table-header'>Client List</h2>
         <table className='client-table'>
             <thead>
                 <tr>
@@ -102,6 +104,7 @@ function ClientList() {
             ))}
             </tbody>
         </table>
+        </>
     )
 }
 

@@ -91,11 +91,11 @@
 .username-error.deposit, .username-error.withdraw {
     position: absolute;
     right: 5%;
-    top: 40%;
+    top: 41%;
 }
 
 .username-accept.deposit, .username-accept.withdraw {
     position: absolute;
     right: 12.5%;
-    top: 30%;
+    top: 33%;
 }

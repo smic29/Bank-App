@@ -52,13 +52,10 @@ function AddUserModal(props) {
         in={isModalOpen}
         timeout={300}
         classNames="fade"
-        unmountOnExit>
+        >
             
         <div className='addUser-modal'>
             <div className='addUser-formBox'>
-                <button className='close-button' onClick={closeModal}>
-                    X
-                </button>
                 <RenderModal />
             </div>
         </div>
@@ -71,7 +68,7 @@ function AddUserForm() {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ balance, setBalance ] = useState(0);
+    const [ balance, setBalance ] = useState('');
     const [ errorMsg, setErrorMsg ] = useState('');
 
     const addUser = () => {
@@ -142,6 +139,7 @@ function AddUserForm() {
                         type='number'
                         value={balance}
                         onChange={(e) => setBalance(e.target.value)}
+                        required
                     ></input>
                 </div>
                 <div className='input-box'>
@@ -150,6 +148,7 @@ function AddUserForm() {
                         type='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                     ></input>
                 </div>
             </legend>

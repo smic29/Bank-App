@@ -41,7 +41,7 @@
     position: relative;
 }
 
-.material-symbols-outlined {
+.password-input-box .material-symbols-outlined {
     position: absolute;
     right: 3%;
     top: 10%;

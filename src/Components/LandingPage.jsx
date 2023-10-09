@@ -43,6 +43,7 @@ function LandingPage({onLogin}){
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                autoFocus
             />
             <label>Password : </label>
             <div className='password-input-box'>

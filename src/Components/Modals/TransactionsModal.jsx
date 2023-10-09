@@ -6,7 +6,7 @@ import CurrencyFormatter, { formatCurrency } from '../../Assets/CurrencyFormatte
 export function DepositForm(props) {
     const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
-    const [ balance, setBalance ] = useState(0);
+    const [ balance, setBalance ] = useState('');
     const [ client, setClient ] = useState('');
 
     const handleFormSubmit = (e) => {
@@ -18,7 +18,7 @@ export function DepositForm(props) {
             user.balance = Number(user.balance) + Number(balance);
             const formattedBalance = formatCurrency(balance)
             user.transactions.unshift(`${formattedBalance} deposited using the Bank App`)
-            setBalance(0);
+            setBalance('');
             // alert('Your balance will be updated shortly. Thank you')
             giveNotif(`Deposit Succesful. Balance Updated`)
             triggerNotif();
@@ -65,7 +65,7 @@ export function DepositForm(props) {
         deposituser.balance = depositAmount + userBalance;
         const formattedDeposit = formatCurrency(depositAmount)
         deposituser.transactions.unshift(`${formattedDeposit} deposited by Admin ${user.username}`)
-        setBalance(0);
+        setBalance('');
         // alert('Balance will be updated shortly')
         giveNotif(`Deposit Successful. Balance Updated`);
         triggerNotif();
@@ -84,7 +84,7 @@ export function DepositForm(props) {
                     <input
                         type='text'
                         value={client}
-                        onChange={(e) => setClient(e.target.value)} 
+                        onChange={(e) => setClient(e.target.value)}
                     />
                     </div>
                     {client !== '' && <ExistHelper />}
@@ -141,7 +141,7 @@ export function DepositForm(props) {
 export function WithdrawForm(props) {
     const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
-    const [ balance, setBalance ] = useState(0);
+    const [ balance, setBalance ] = useState('');
     const [ client, setClient ] = useState('');
 
     const handleFormSubmit = (e) => {
@@ -158,7 +158,7 @@ export function WithdrawForm(props) {
             user.balance = currentBalance - withdrawAmount;
             const formattedBalance = formatCurrency(balance)
             user.transactions.unshift(`(${formattedBalance}) withdrawn using the Bank App`)
-            setBalance(0);
+            setBalance('');
             // alert('Withdrawal Successful. Your balance will be updated shortly. Thank you')
             giveNotif(`${formattedBalance} withdrawn. Balance updated.`)
             triggerNotif();
@@ -211,7 +211,7 @@ export function WithdrawForm(props) {
         withdrawFrom.balance = userBalance - withdrawAmount;
         const formattedWithdrawAmount = formatCurrency(withdrawAmount)
         withdrawFrom.transactions.unshift(`(${formattedWithdrawAmount}) withdrawn by Admin ${user.username}`)
-        setBalance(0);
+        setBalance('');
         // alert('Withdrawal Succesful. Balance will be updated shortly')
         giveNotif(`${formattedWithdrawAmount} withdrawn from ${withdrawFrom.username}'s account. Balance Updated`)
         triggerNotif();
@@ -282,9 +282,8 @@ export function WithdrawForm(props) {
 export function TransferForm(props) {
     const { data, triggerNotif, giveNotif } = useData();
     const { user } = props;
-    const [ balance, setBalance ] = useState(0);
     const [ recipient, setRecipient ] = useState(null);
-    const [ sendAmount, setSendAmount ] = useState(0);
+    const [ sendAmount, setSendAmount ] = useState('');
     const [ sender, setSender ] = useState(null);
 
     const doesUserExist = () => {
@@ -375,7 +374,7 @@ export function TransferForm(props) {
             // alert(`Transfer completed. Balance will be updated shortly`)
             giveNotif(`${formattedAmountSend} sent to ${receiver.username}. Balance Updated`)
             triggerNotif();
-            setSendAmount(0);
+            setSendAmount('');
             setRecipient('');
         } else if (userExists && amountSend <= 0 && !isSendingtoSelf) {
             alert(`Yeah, still can do anything with nothing, bro.`)
@@ -416,7 +415,7 @@ export function TransferForm(props) {
             triggerNotif();
             setRecipient(receiver.username)
             setSender(senduser.username)
-            setSendAmount(0);
+            setSendAmount('');
         } else {
             alert(`Please review transfer details`)
         }
@@ -442,6 +441,7 @@ export function TransferForm(props) {
                             value={sender}
                             onChange={(e) => setSender(e.target.value)}
                             required
+                            tabIndex='1'
                         />
                         {sender !== null && sender !== '' && <SenderFinder />}
                         <label>Amount :</label>
@@ -450,6 +450,7 @@ export function TransferForm(props) {
                             value={sendAmount}
                             onChange={(e) => setSendAmount(e.target.value)}
                             required
+                            tabIndex='3'
                         />
                     </div>
                     <div className='receiver-box box'>
@@ -462,6 +463,7 @@ export function TransferForm(props) {
                             value={recipient}
                             onChange={(e) => setRecipient(e.target.value)}
                             required
+                            tabIndex='2'
                         />
                         {recipient !== null && recipient !== '' && <UserFinder />}
                         
