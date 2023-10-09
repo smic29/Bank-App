@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './BudgetAppModal.css'
+import {formatCurrency} from '../../Assets/CurrencyFormatter';
 
 
 function BudgetAppModal({ user }) {
@@ -57,10 +58,10 @@ function BudgetAppModal({ user }) {
       return expenses.reduce((total, expense) => total + parseFloat(expense.amount), 0).toFixed(2);
     };
   
-    const formattedBalance = user.balance.toFixed(2);
+    const formattedBalance = formatCurrency(user.balance);
   
     const lessExpensesBal = () => {
-      return (parseFloat(formattedBalance) - parseFloat(calculateTotalAmount())).toFixed(2);
+      return formatCurrency(user.balance - calculateTotalAmount());
     };
   
     return (
@@ -151,7 +152,7 @@ function BudgetAppModal({ user }) {
             </tbody>
           </table>
         </div>
-        <p className="total-expenses">Total Expenses: ₱ {calculateTotalAmount()}</p>
+        <p className="total-expenses">Total Expenses: {formatCurrency(calculateTotalAmount())}</p>
         <br></br>
         <button className="budgetApp-btn" onClick={handleClearExpensesStorage}>Clear Expenses List</button>
       </div>
