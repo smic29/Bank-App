@@ -16,7 +16,7 @@
   }
 
   .expenses-table-container {
-    max-height: 25vh; /* Limit the max-height to 40% of the viewport height */
+    max-height: 25vh;
     overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -30,7 +30,7 @@
   }
   
   .table-body {
-    max-height: 200px; /* Adjust the height as needed */
+    max-height: 200px; 
     overflow-y: auto;
     width: 100%;
   }
