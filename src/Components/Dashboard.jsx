@@ -9,7 +9,7 @@ import { CSSTransition } from 'react-transition-group';
 
 function Dashboard(props) {
     const { user, onLogout } = props;
-    const { data, isModalOpen }  = useData();
+    const { data, isModalOpen, openModal }  = useData();
     const currentUser = data.find((useObj) =>
     useObj.username.toLowerCase() === user.username.toLowerCase());
 
@@ -33,6 +33,7 @@ function Dashboard(props) {
             >
             <AddUserModal user={user}/>
             </CSSTransition>
+            <button className='bA' onClick={()=>openModal('budget')}>Budget-App</button>
         </div>
     )
 }

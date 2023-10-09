@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useData } from '../../Context/UserData';
 import './AddUserModal.css';
-import { DepositForm, WithdrawForm, TransferForm } from './TransactionsModal';
+import { DepositForm, WithdrawForm, TransferForm} from './TransactionsModal';
 import { CSSTransition } from 'react-transition-group';
+import BudgetAppModal from './BudgetAppModal';
 
 function AddUserModal(props) {
     const { isModalOpen, closeModal, activeModal } = useData();
@@ -42,6 +43,8 @@ function AddUserModal(props) {
                 return <WithdrawForm user={user}/>
             case 'transfer':
                 return <TransferForm user={user}/>
+            case 'budget':
+                return <BudgetAppModal user={user}/>    
             default:
                 return null;
         }

@@ -1,0 +1,128 @@
+.budgetApp-modal {
+    max-width: 95vw;
+    max-height: 90vh ;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    color: #333;
+  }
+
+  .balance-window {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .expenses-table-container {
+    max-height: 25vh; /* Limit the max-height to 40% of the viewport height */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .table-header {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .table-body {
+    max-height: 200px; /* Adjust the height as needed */
+    overflow-y: auto;
+    width: 100%;
+  }
+  
+  .expenses-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .expenses-table th,
+  .expenses-table td {
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .table-column {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .expenses-table th {
+    background-color: #f2f2f2;
+  }
+  
+  
+  h1 {
+    color: #333;
+  }
+
+  .balance-input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: right;
+    width: 80px;
+  }
+  
+  .budgetApp-input,
+  .budgetApp-btn {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+ .budgetApp-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .edit-delete-btn {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .budgetApp-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .total-expenses {
+    text-align: left;
+  }
+  
+  button.clear-button {
+    background-color: #dc3545;
+  }
