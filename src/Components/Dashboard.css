@@ -27,11 +27,33 @@ transition: opacity 300ms, transform 300ms;
     font-family: "Roboto";
 }
 
-.logout-button {
+.dashboard-container h1 {
+    font-family: 'Montserrat';
+}
+
+/* .dashboard-welcome {
+    position: fixed;
+    left: 2.5%;
+    top: 10%;
+} */
+
+.logout {
     position: fixed;
     top: 0;
     right: 0;
     margin: 1rem;
+    cursor: pointer;
+    font-size: 2.5rem;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.logout:hover {
+    color: lightcoral;
+    transform: scale(1.2);
+}
+
+.logout:active {
+    transform: scale(0.95);
 }
 
 .transaction-buttons-box {
@@ -61,12 +83,12 @@ transition: opacity 300ms, transform 300ms;
 
 .client-table tr {
     background-color: transparent;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.2s, color 0.3s;
 }
 
 .client-table tr:nth-child(even) {
     background-color: whitesmoke;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.2s, color 0.3s;
 }
 
 .client-table tbody tr:hover {
