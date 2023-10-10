@@ -37,6 +37,15 @@
     margin-top: 1rem;
 }
 
+.transfer-form-admin h2 {
+    font-family: 'Montserrat';
+    margin-bottom: 1rem;
+}
+
+.transfer-form p {
+    margin-bottom: .5rem;
+}
+
 .username-error {
     color: red;
     font-size: 0.75rem;

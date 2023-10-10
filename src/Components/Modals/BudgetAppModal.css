@@ -57,7 +57,7 @@
   }
   
   
-  h1 {
+  .budgetApp-modal h1 {
     color: #333;
   }
 
@@ -78,22 +78,22 @@
     border-radius: 5px;
   }
   
-  table {
+  .budgetApp-modal table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
   }
   
-  table, th, td {
+  .budgetApp-modal table, th, td {
     border: 1px solid #ddd;
   }
   
-  th, td {
+  .budgetApp-modal th, td {
     padding: 10px;
     text-align: left;
   }
   
-  th {
+  .budgetApp-modal th {
     background-color: #f2f2f2;
     font-weight: bold;
   }
@@ -114,7 +114,7 @@
     background-color: #0056b3;
   }
   
-  p {
+  .budgetApp-modal p {
     margin-top: 10px;
     font-weight: bold;
   }

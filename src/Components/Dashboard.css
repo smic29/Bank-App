@@ -37,23 +37,44 @@ transition: opacity 300ms, transform 300ms;
     top: 10%;
 } */
 
-.logout {
+.logout-box {
     position: fixed;
     top: 0;
     right: 0;
     margin: 1rem;
-    cursor: pointer;
-    font-size: 2.5rem;
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-.logout:hover {
+.logout-box .logout {
+    cursor: pointer;
+    font-size: 2.5rem;
+    transition: transform 0.2s , color 0.2s ease-in-out;
+}
+
+.logout-box .logout:hover {
     color: lightcoral;
     transform: scale(1.2);
 }
 
-.logout:active {
+.logout-box .logout:active {
     transform: scale(0.95);
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: visibility 0.2s, opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+.logout:hover + .logout-button {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .transaction-buttons-box {
@@ -120,4 +141,5 @@ transition: opacity 300ms, transform 300ms;
     position: fixed;
     bottom: 0;
     right: 0;
+    margin: 1rem;
 }

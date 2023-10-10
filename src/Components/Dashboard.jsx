@@ -43,16 +43,7 @@ function LogoutButton(props) {
     const { triggerNotif, giveNotif } = useData();
 
     return (
-        // <button
-        //     onClick={() => {
-        //         giveNotif(`Good bye ${user.username}`);
-        //         triggerNotif();
-        //         onLogout();
-        //     }}
-        //     className="logout-button"
-        // >
-        //     Logout
-        // </button>
+        <div className='logout-box'>
         <span class="material-symbols-outlined logout"
         onClick={() => {
                      giveNotif(`Good bye ${user.username}`);
@@ -61,6 +52,10 @@ function LogoutButton(props) {
                  }}>
         logout
         </span>
+        <button className='logout-button'>
+            Logout
+        </button>
+        </div>
     )
 }
 
