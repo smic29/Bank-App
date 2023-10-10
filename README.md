@@ -1,6 +1,13 @@
 # Bank-App Project for Avion school
-- Ian Sibulo
-- Ian De Castro
+## Made by: 
+- [Ian Sibulo](https://github.com/smic29) 
+- [Ian De Castro](https://github.com/IanPDC)
+
+## Site Link:
+- [Bank App](https://smic29.github.io/bank-app/)
+
+## Made with:
+- React
 
 ## Project Requirements
 
