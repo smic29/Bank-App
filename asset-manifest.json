@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/bank-app/static/css/main.afea5949.css",
+    "main.js": "/bank-app/static/js/main.8ff064c1.js",
+    "static/js/787.ab64e9c6.chunk.js": "/bank-app/static/js/787.ab64e9c6.chunk.js",
+    "static/media/logo.png": "/bank-app/static/media/logo.1d707f3000b8574dc736.png",
+    "index.html": "/bank-app/index.html",
+    "main.afea5949.css.map": "/bank-app/static/css/main.afea5949.css.map",
+    "main.8ff064c1.js.map": "/bank-app/static/js/main.8ff064c1.js.map",
+    "787.ab64e9c6.chunk.js.map": "/bank-app/static/js/787.ab64e9c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afea5949.css",
+    "static/js/main.8ff064c1.js"
+  ]
+}
