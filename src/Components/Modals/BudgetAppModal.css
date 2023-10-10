@@ -40,9 +40,29 @@
     width: 100%;
   }
   
-  .expenses-table th,
+  .expenses-table th {
+    text-align: center;
+  }
+
   .expenses-table td {
+    text-align: right;
+    padding: 10px;
+  }
+
+  #amount-expense {
+    text-align: right;
+  }
+
+  #amount-expense::placeholder {
     text-align: left;
+  }
+
+  #expense-td {
+    text-align: left;
+  }
+
+  #edit-delete-td {
+    text-align: center;
     padding: 10px;
   }
   
@@ -67,7 +87,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: right;
-    width: 80px;
+    width: 100px;
   }
   
   .budgetApp-input,
@@ -77,21 +97,11 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
-  .budgetApp-modal table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
+
   .budgetApp-modal table, th, td {
     border: 1px solid #ddd;
   }
   
-  .budgetApp-modal th, td {
-    padding: 10px;
-    text-align: left;
-  }
   
   .budgetApp-modal th {
     background-color: #f2f2f2;
@@ -123,6 +133,3 @@
     text-align: left;
   }
   
-  button.clear-button {
-    background-color: #dc3545;
-  }

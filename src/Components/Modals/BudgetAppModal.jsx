@@ -63,13 +63,17 @@ function BudgetAppModal({ user }) {
     const lessExpensesBal = () => {
       return formatCurrency(user.balance - calculateTotalAmount());
     };
+
+    function numberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
   
     return (
       <div className="budgetApp-modal">
         <h1>Budget App</h1>
         <h2>Hello, {user.username}!</h2>
         <div className="balance-window">
-          <p>Bank Balance:
+          <p>Available Balance: &nbsp;
             <input
               className="balance-input"
               type="text"
@@ -77,7 +81,7 @@ function BudgetAppModal({ user }) {
               value={formattedBalance}
             />
           </p>
-          <p>Less Expenses:
+          <p>Projected Balance: &nbsp;
           <input
               className="balance-input"
               type="text"
@@ -96,7 +100,8 @@ function BudgetAppModal({ user }) {
           />
           <input
             className="budgetApp-input"
-            type="text"
+            id="amount-expense"
+            type="number"
             placeholder="Amount"
             value={newExpense.amount}
             onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
@@ -108,14 +113,14 @@ function BudgetAppModal({ user }) {
             <thead>
               <tr>
                 <th className="table-column">Description</th>
-                <th className="table-column">Amount (₱)</th>
+                <th className="table-column">Amount</th>
                 <th className="table-column">Action</th>
               </tr>
             </thead>
             <tbody>
               {expenses.map((expense) => (
                 <tr key={expense.id}>
-                  <td>
+                  <td id="expense-td">
                     {editingId === expense.id ? (
                       <input
                         type="text"
@@ -130,14 +135,14 @@ function BudgetAppModal({ user }) {
                     {editingId === expense.id ? (
                       <input
                         type="text"
-                        value={newExpense.amount}
+                        value={numberWithCommas(newExpense.amount)}
                         onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
                       />
                     ) : (
-                      expense.amount
+                      numberWithCommas(expense.amount)
                     )}
                   </td>
-                  <td>
+                  <td id="edit-delete-td">
                     {editingId === expense.id ? (
                       <button onClick={handleSave}>Save</button>
                     ) : (
