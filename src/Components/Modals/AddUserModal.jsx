@@ -81,7 +81,8 @@ function AddUserForm() {
             email: email,
             isLoggedIn: false,
             balance: Number(balance),
-            isAdmin: false
+            isAdmin: false,
+            transactions: []
         }
 
         updateData(newUser);

@@ -9,7 +9,7 @@ import { CSSTransition } from 'react-transition-group';
 
 function App() {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-  const [ user, setUser ] = useState(null);
+  const [ user, setUser ] = useState('');
   const [ areTestUsersAdded, setAreTestUsersAdded ] = useState(false);
 
   const handleLogin = (loggedInUser) => {
@@ -20,7 +20,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     user.isLoggedIn = false;
-    setUser(null);
+    setUser('');
   }
 
   const handleAddedTestUsers = () => {

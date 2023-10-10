@@ -13,7 +13,7 @@
 }
 
 .add-user-box .material-symbols-outlined:hover {
-    color: lightcoral;
+    color: #4682A9;
     transform: scale(1.2);
 }
 
@@ -25,6 +25,7 @@
     background: none;
     border: none;
     font-size: 1rem;
+    font-weight: bold;
     visibility: hidden;
     opacity: 0;
     transform: translateX(100%);
@@ -40,4 +41,21 @@
 .disabled {
     opacity: .8;
     pointer-events: none;
+}
+
+.no-account {
+    font-size: .75rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.no-account:hover {
+    color: #F6F4EB;
+}
+
+.no-account:active {
+    transform: scale(0.9);
 }

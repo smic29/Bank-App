@@ -2,6 +2,7 @@ import './TransactionsModal.css'
 import { useData } from '../../Context/UserData'
 import { useState } from 'react'
 import CurrencyFormatter, { formatCurrency } from '../../Assets/CurrencyFormatter';
+import { numberWithCommas } from './BudgetAppModal';
 
 export function DepositForm(props) {
     const { data, triggerNotif, giveNotif } = useData();

@@ -59,6 +59,12 @@ function LandingPage({onLogin}){
                     {showPassword ? 'visibility' : 'visibility_off'}
                 </span>
             </div>
+            <p className='no-account'
+                onClick={() => {
+                    giveNotif(`Better ask Dan`);
+                    triggerNotif();
+                }}
+            >Don't have an account?</p>
             <input 
                 className='submit-button'
                 type="submit"

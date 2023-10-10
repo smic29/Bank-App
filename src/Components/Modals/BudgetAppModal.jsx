@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './BudgetAppModal.css'
 import {formatCurrency} from '../../Assets/CurrencyFormatter';
 
+export function numberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
 
 function BudgetAppModal({ user }) {
     const [expenses, setExpenses] = useState(() => {
-      const storedExpenses = localStorage.getItem('expenses');
+      const storedExpenses = localStorage.getItem(`expenses${user.username}`);
       return storedExpenses ? JSON.parse(storedExpenses) : [];
     });
   
@@ -13,7 +16,7 @@ function BudgetAppModal({ user }) {
     const [newExpense, setNewExpense] = useState({ description: '', amount: '' });
   
     useEffect(() => {
-       localStorage.setItem('expenses', JSON.stringify(expenses));
+       localStorage.setItem(`expenses${user.username}`, JSON.stringify(expenses));
     }, [expenses]);
   
     const handleAddExpense = () => {
@@ -50,7 +53,7 @@ function BudgetAppModal({ user }) {
     };
   
     const handleClearExpensesStorage = () => {
-      localStorage.removeItem('expenses');
+      localStorage.removeItem(`expenses${user.username}`);
       setExpenses([]);
     };
   
@@ -83,7 +86,7 @@ function BudgetAppModal({ user }) {
           </p>
           <p>Projected Balance: &nbsp;
           <input
-              className="balance-input"
+              className={`balance-input ${(user.balance - calculateTotalAmount())<0 ? 'balance-negative':''}`}
               type="text"
               placeholder=""
               value={lessExpensesBal()}

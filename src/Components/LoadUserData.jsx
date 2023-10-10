@@ -11,7 +11,7 @@ function LoadUserData(){
         <span 
         class={`material-symbols-outlined ${isDisabled ? 'disabled':''}`}
         onClick={() => !isDisabled && openModal('adduser')}>
-        account_circle
+        manage_accounts
         </span>
         <button
             onClick={() => !isDisabled && openModal('adduser')}

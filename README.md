@@ -35,3 +35,4 @@
 #### Additional
 - [x] Formatted Currency
 - [x] Custom Notification/Alerts
+- [x] Budget-App functionality for all users
